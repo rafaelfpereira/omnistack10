@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const DevController = require('./controllers/DevController')
 
 const routes = Router()
 
@@ -6,10 +7,7 @@ const routes = Router()
 // route params: request.params
 // body: request.body
 
-routes.post('/create-user', (request, response) => {
-  console.log(request.body)
-  return response.json({ message: 'Hi, this is a test.'})
-})
-
+routes.post('/devs', DevController.store)
+routes.get('/devs', DevController.index)
 
 module.exports = routes;

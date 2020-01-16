@@ -1,6 +1,5 @@
 const express = require('express')
 const mongoose = require('mongoose')
-
 const routes = require('./routes')
 
 const app = express()
@@ -17,8 +16,8 @@ mongoose.connect(
 app.use(express.json())
 app.use(routes)
 
+//define a porta
 app.listen(3333)
-
 
 //PAREI EM 52 MINUTOS DO VÍDEO
 
@@ -26,3 +25,4 @@ app.listen(3333)
 // - insomnia para teste de api
 // - nodemon (yarn add nodemon -D) para live update da api
 // - mongoose (yarn add mongoose) para conexão com o banco
+// - axios
