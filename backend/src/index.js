@@ -19,8 +19,6 @@ app.use(routes)
 //define a porta
 app.listen(3333)
 
-//PAREI EM 52 MINUTOS DO VÍDEO
-
 //foram instalados até agora:
 // - insomnia para teste de api
 // - nodemon (yarn add nodemon -D) para live update da api
