@@ -19,7 +19,19 @@ module.exports = {
     let dev = await Dev.findOne({ github_username })
 
     if (!dev) {
-      const apiResponse = await axios.get(`https://api.github.com/users/${github_username}`)
+      let apiResponse
+      
+      try {
+        apiResponse = await axios.get(
+          `https://api.github.com/users/${github_username}`
+        )
+      } catch (err) {
+        return response.json({
+          erro:
+            'Não foi possível encontrar um registro com o github_username infomado',
+          message: err.message
+        })
+      }
 
       let { name = login, avatar_url, bio } = apiResponse.data
 
@@ -27,7 +39,7 @@ module.exports = {
 
       const location = {
         type: 'Point',
-        coordinates: [longitude, latitude],
+        coordinates: [longitude, latitude]
       }
 
       dev = await Dev.create({
@@ -42,7 +54,7 @@ module.exports = {
 
     return response.json(dev)
   },
-  
+
   async index(request, response) {
     const devs = await Dev.find()
     return response.json(devs)
