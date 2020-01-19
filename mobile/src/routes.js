@@ -1,8 +1,8 @@
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 
-import Main from './pages/main'
-import Profile from './pages/profile'
+import Main from './pages/Main'
+import Profile from './pages/Profile'
 
 const Routes = createAppContainer(
   createStackNavigator({
