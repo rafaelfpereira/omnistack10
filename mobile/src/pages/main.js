@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { StyleSheet, Image, View, Text } from 'react-native'
 import MapView, { Marker, Callout } from 'react-native-maps'
 import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location'
-function Main() {
+function Main({ navigation }) {
   const [currentRegion, setCurrentRegion] = useState(null)
   useEffect(() => {
     async function loadInitialPosition() {
@@ -36,7 +36,9 @@ function Main() {
       <Marker coordinate={{ latitude: -29.7451705, longitude: -51.0878812 }}>
         <Image style={styles.avatar} source={{ uri: 'https://avatars0.githubusercontent.com/u/4705113?s=460&v=4' }}/>
         
-        <Callout>
+        <Callout onPress={() => {
+          navigation.navigate('Profile', { github_username: 'diego3g' })
+        }}>
           <View style={styles.callout}>
             <Text style={styles.devName}>O Nome do Vivente</Text>
             <Text style={styles.devBio}>Como o vivente quer ser reconhecido e pelo quê.</Text>
